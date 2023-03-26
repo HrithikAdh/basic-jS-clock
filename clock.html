@@ -1,0 +1,76 @@
+
+
+<!DOCTYPE html>
+<html>
+<head>
+ <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
+<style>
+
+body{
+
+    background-color:black ;
+}
+
+div{
+
+color:blue;
+margin-top:15%;
+margin-left: 20%;
+font-size: 650%;
+
+letter-spacing: 25px;
+font-family: 'Orbitron', sans-serif;
+position: inherit;
+
+
+
+}
+
+</style>
+
+   <script>
+interval = setInterval(function dat(){
+const date = new Date();  //give full date 
+timeD = date.toTimeString(); // get time only hh/mm/ss with location detail
+time = timeD.split(" ")[0]; // take hh/mm/ss GMT (aus day... time) split each components and show [0] element which is hh/mm/ss only
+
+const clock = document.getElementById("paceHolder");
+clock.innerHTML = time;
+
+
+
+},1000);
+
+
+
+
+
+Weather.getCurrent("Melbourne", function(current) {
+  console.log(
+    ["currently:",current.temperature(),"and",current.conditions()].join(" ")
+  );
+});
+ 
+Weather.getForecast("Melbourne", function(forecast) {
+  console.log("forecast high: " + forecast.high());
+  console.log("forecast low: " + forecast.low());
+});
+ 
+   </script> 
+</head>
+
+<body>
+    <div>
+
+<h1 id="paceHolder" onclick="interval">hello</h1>
+    
+    <span class="city-temp">...<sup>°C</sup></span>
+</div>
+
+</body>
+
+
+
+
+
+</html>
